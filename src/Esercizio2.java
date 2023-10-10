@@ -20,17 +20,35 @@ public class Esercizio2 {
         } finally {
             input.close();
         }
-        esercizio2(number);
+        esercizio2b(number);
+
+
+        esercizio2c(number, true);
 
 
     }
 
-    public static void esercizio2(List<Integer> number) {
-        for (int i = number.size(); i > 0; i--) {
-            number.add(number.get(i - 1));
+    public static void esercizio2b(List<Integer> number) {
+        List<Integer> number2 = new ArrayList<>(number);
+        for (int i = number2.size(); i > 0; i--) {
+            number2.add(number.get(i - 1));
+        }
+        System.out.println(number2);
+    }
+
+    public static void esercizio2c(List<Integer> number, boolean bool) {
+        Iterator<Integer> i = number.iterator();
+        while (i.hasNext()) {
+            int currentInt = i.next();
+            if (bool) {
+                if (currentInt % 2 != 0) i.remove();
+            } else {
+                if (currentInt % 2 == 0) i.remove();
+            }
         }
         System.out.println(number);
     }
 
 
 }
+
